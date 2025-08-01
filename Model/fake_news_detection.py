@@ -267,9 +267,9 @@ for i, v in enumerate(acc_list):
 plt.tight_layout()
 plt.show()
 
-# -------------------------------
+# ----------------------------------
 # 9. PREDICTION FUNCTION
-# -------------------------------
+# ----------------------------------
 def predict_news(text):
     print(f"\n🔍 Predicting: {text[:100]}...")
     cleaned = preprocess_text(text)
