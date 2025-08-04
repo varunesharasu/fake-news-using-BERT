@@ -1,6 +1,6 @@
 # 🚨 Fake News Detection System
 
-A comprehensive machine learning project that detects fake news using multiple algorithms including traditional ML models, LSTM, and BERT transformer models. This system is trained on the WELFake dataset and provides comparison between different approaches to fake news classification.
+A comprehensive machine learning project that detects fake NEWS using multiple algorithms including traditional ML models, LSTM, and BERT transformer models. This system is trained on the WELFake dataset and provides comparison between different approaches to fake news classification.
 
 ## 📊 Project Overview
 
