@@ -14,6 +14,7 @@ import nltk
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import joblib
 
 # -------------------------------
 # 1. DOWNLOAD NLTK DATA (Only first time)
@@ -122,6 +123,9 @@ for name, model in models.items():
         acc = accuracy_score(y_test, pred)
         results[name] = acc
         print(f"✅ {name} Accuracy: {acc:.4f}\n")
+        # Save trained scikit-learn models
+        joblib.dump(model, f"saved_models/{name.replace(' ', '_').lower()}.joblib")
+        print(f"💾 Saved {name} model to saved_models/{name.replace(' ', '_').lower()}.joblib\n")
     except Exception as e:
         print(f"❌ {name} failed: {e}\n")
 
@@ -172,6 +176,9 @@ try:
     acc_lstm = accuracy_score(y_test_lstm, y_pred_lstm)
     results["LSTM"] = acc_lstm
     print(f"\n✅ LSTM Accuracy: {acc_lstm:.4f}")
+    # Save LSTM model
+    model_lstm.save("saved_models/lstm_model.h5")
+    print("💾 Saved LSTM model to saved_models/lstm_model.h5\n")
 except Exception as e:
     print(f"❌ LSTM failed: {e}")
 
@@ -239,6 +246,13 @@ try:
     acc_bert = accuracy_score(y_test_b, y_pred_bert)
     results["BERT"] = acc_bert
     print(f"\n✅ BERT Accuracy: {acc_bert:.4f}")
+
+    # Save BERT model and tokenizer
+    model_bert.save_weights("saved_models/bert_model_weights.h5")
+    bert_model.save_pretrained("saved_models/bert_base_uncased")
+    tokenizer_bert.save_pretrained("saved_models/bert_base_uncased")
+    print("💾 Saved BERT model weights to saved_models/bert_model_weights.h5")
+    print("💾 Saved BERT base model and tokenizer to saved_models/bert_base_uncased/\n")
 
 except Exception as e:
     print(f"❌ BERT failed: {e}")
